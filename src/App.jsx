@@ -9,7 +9,7 @@ import My_enrollments from "./pages/student/My_enrollments";
 import Home from "./pages/student/Home";
 import CourseList from "./pages/student/CourseList";
 import CourseMapList from "./pages/student/CourseMapList";
-import CourseDetails from "./pages/student/CourseDetails";
+import CourseDetails from "./pages/student/CourseDetails/CourseDetails";
  function App() {
   const isEducatorRoute=useMatch("/educator/*");
   

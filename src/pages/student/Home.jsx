@@ -2,7 +2,6 @@ import React from "react";
 import Hero from "../../components/student/Hero";
 import Companies from "../../components/student/Companies";
 import CourseSection from "../../components/student/CourseSection";
-import TestimonialsCard from "../../components/student/TestimonialsCard";
 import Testimonials from "../../components/student/Testimonials";
 import CalltoAction from "../../components/student/CalltoAction";
 import Footer from "../../components/student/Footer";
