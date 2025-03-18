@@ -63,9 +63,10 @@ const discountedPrice=(convertedPrice*props.course.discount)/100;
         <div className="mt-4">
           <h3 className="text-lg font-semibold text-gray-600">📌 What you'll learn:</h3>
           <ul className="list-disc text-gray-600 text-sm pl-5 mt-1 space-y-1">
-            <li>🔥 React Basics & Hooks</li>
-            <li>🚀 State Management (Redux)</li>
-            <li>🛠️ Project-Based Learning</li>
+          {props.course.courseContent.slice(0, 4).map((content) => (
+   <li key={content.chapterId}>🔥 {content.chapterTitle}</li>
+))}
+<li> 🔥 and much more...</li>
           </ul>
         </div>
         <button className="mt-5 w-full bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white py-3 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
