@@ -48,11 +48,7 @@ const CourseDetails = () => {
             ))}
           </span>
         </p>
-
-        {/* Course Structure */}
         <CourseStructure />
-
-        {/* Course Description */}
         <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg border border-gray-200 mt-6">
           <h2 className="text-2xl font-bold text-gray-800 mb-2">Course Description</h2>
           <p
@@ -61,8 +57,6 @@ const CourseDetails = () => {
           ></p>
         </div>
       </div>
-
-      {/* Right Section - Discount Card */}
       <div className="w-full lg:w-96 bg-white p-5 rounded-lg shadow-md self-start">
         <CourseDiscountCard course={course} />
       </div>

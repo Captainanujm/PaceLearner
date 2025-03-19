@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { dummyCourses } from "../assets/assets";
 
 export const AppContext = createContext();
 
@@ -16,7 +17,23 @@ export const CurrencyProvider = ({ children }) => {
 
   const [currency, setCurrency] = useState("USD");
   const [playinglecture,setPlayingLecture]=useState(null);
-
+  function lectureCount(courseID){
+    const courseFindedForDuration=dummyCourses.find(ind_course=>ind_course._id===courseID)
+    if (!courseFindedForDuration) return 0;
+    return courseFindedForDuration.courseContent.reduce((leccount,chapter)=>{
+      return leccount+  chapter.chapterContent.length;
+    },0)
+  }
+  function calculateDuration(courseID){
+    const courseFindedForDuration=dummyCourses.find(ind_course=>ind_course._id===courseID)
+    if (!courseFindedForDuration) return 0;
+      const totalHours=courseFindedForDuration.courseContent.reduce((lecdur,chapter)=>{
+          return lecdur+chapter.chapterContent.reduce((lec,lec_object)=>{
+              return lec+lec_object.lectureDuration;
+          },0)
+      },0)/60;
+      return totalHours.toFixed(2);
+  }
   useEffect(() => {
     const fetchLocation = async () => {
       try {
@@ -33,10 +50,10 @@ export const CurrencyProvider = ({ children }) => {
     };
 
     fetchLocation();
-  }, []); // Empty dependency array means it runs only once on mount
+  }, []);
 
   return (
-    <AppContext.Provider value={{ currency,playinglecture,setPlayingLecture }}>
+    <AppContext.Provider value={{ currency,playinglecture,setPlayingLecture,calculateDuration,lectureCount }}>
       {children}
     </AppContext.Provider>
   );

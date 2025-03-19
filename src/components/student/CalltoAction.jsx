@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FaArrowRight } from 'react-icons/fa'; // Import arrow icon
+import { FaArrowRight } from 'react-icons/fa';
 
 const CalltoAction = () => {
   return (
