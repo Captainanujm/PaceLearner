@@ -21,7 +21,6 @@ const lecturesCompleted=[4,3,1,2,1,3,2,4];
           <tbody>
             {dummyCourses.map((enrollment, index) => (
               <tr key={index} className="text-center">
-                {/* ✅ Course Column - Thumbnail + Title */}
                 <td className="border border-gray-300 px-4 py-2">
                   <div className="flex items-center gap-3">
                     <img 
@@ -32,7 +31,7 @@ const lecturesCompleted=[4,3,1,2,1,3,2,4];
                     <span className="text-left text-ellipsis">{enrollment.courseTitle}</span>
                   </div>
                 </td>
-                <td className="border border-gray-300 px-4 py-2">{calculateDuration(enrollment._id)}</td>
+                <td className="border border-gray-300 px-4 py-2">{calculateDuration(enrollment._id)} hours</td>
                 <td className="border border-gray-300 px-4 py-2"> {`${lecturesCompleted[index]}/${lectureCount(enrollment._id)}`}</td>
                 <td className="border border-gray-300 px-4 py-2">
                <div className="w-full bg-gray-200 rounded-full h-6 relative">
