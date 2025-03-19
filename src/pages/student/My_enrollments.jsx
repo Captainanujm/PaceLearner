@@ -29,7 +29,7 @@ const lecturesCompleted=[4,3,1,2,1,3,2,4];
                       alt={enrollment.courseTitle} 
                       className="w-14 h-14 object-cover rounded-md" 
                     />
-                    <span className="text-left">{enrollment.courseTitle}</span>
+                    <span className="text-left text-ellipsis">{enrollment.courseTitle}</span>
                   </div>
                 </td>
                 <td className="border border-gray-300 px-4 py-2">{calculateDuration(enrollment._id)}</td>
