@@ -22,7 +22,7 @@ const averageRating = totalReviews > 0
 const convertedPrice = props.course.coursePrice * (exchangeRates[currency] || 1);
 const discountedPrice=(convertedPrice*props.course.discount)/100;
   return (
-    <div className="max-w-sm mx-auto border border-gray-200 rounded-2xl shadow-xl bg-white overflow-hidden transition-transform transform hover:scale-105 duration-300">
+    <div className="max-w-sm mx-auto border border-gray-200 rounded-2xl shadow-xl bg-white overflow-hidden">
       <img
         src={props.course.courseThumbnail}
         alt="Course"
@@ -30,7 +30,10 @@ const discountedPrice=(convertedPrice*props.course.discount)/100;
       />
       <div className="p-6">
         <h2 className="text-2xl font-bold text-gray-800">{courseTitle}</h2>
-        <p className="text-sm text-gray-500 mb-3">Learn React from scratch with hands-on projects!</p>
+        <p
+  dangerouslySetInnerHTML={{ __html: `${props.course.courseDescription.slice(0, 80)}...` }}
+  className="text-sm text-gray-500 mb-3"
+></p>
         <div className="mt-3 space-y-3">
           <p className="text-gray-700 text-lg">
             <strong>📚 Lectures:  {props.course.courseContent.reduce((countLec,currentIndex)=>
