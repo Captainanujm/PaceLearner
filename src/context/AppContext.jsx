@@ -15,6 +15,7 @@ export const CurrencyProvider = ({ children }) => {
   };
 
   const [currency, setCurrency] = useState("USD");
+  const [playinglecture,setPlayingLecture]=useState(null);
 
   useEffect(() => {
     const fetchLocation = async () => {
@@ -35,7 +36,7 @@ export const CurrencyProvider = ({ children }) => {
   }, []); // Empty dependency array means it runs only once on mount
 
   return (
-    <AppContext.Provider value={{ currency }}>
+    <AppContext.Provider value={{ currency,playinglecture,setPlayingLecture }}>
       {children}
     </AppContext.Provider>
   );

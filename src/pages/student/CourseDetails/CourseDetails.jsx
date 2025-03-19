@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { dummyCourses } from "../../../assets/assets";
 import CourseDiscountCard from "./CourseDiscountCard";
 import { CourseStructure } from "./CourseStructure";
 import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
+import { AppContext } from "../../../context/AppContext";
 
 const CourseDetails = () => {
+  const {setPlayingLecture}=useContext(AppContext);
   const { courseID } = useParams();
   const course = dummyCourses.find((c) => c._id === courseID);
 
   if (!course) {
     return <p className="text-center text-red-500">Course not found!</p>;
   }
+  useEffect(()=>{
+      setPlayingLecture(null);
+  },[courseID,setPlayingLecture]
+)
 
   const totalReviews = course.courseRatings.length;
   const averageRating =

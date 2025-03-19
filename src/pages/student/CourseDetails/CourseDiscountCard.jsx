@@ -2,9 +2,11 @@ import { Star } from "lucide-react";
 import { useContext } from "react";
 import { AppContext } from "../../../context/AppContext";
 import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
+import YouTube from "react-youtube";
 const CourseCard = (props) => {
 const courseTitle=props.course.courseTitle;
 const {currency}=useContext(AppContext);
+const {playinglecture}=useContext(AppContext);
 const totalReviews=props.course.courseRatings.length;
 const exchangeRates = {
   USD: 1,   
@@ -23,11 +25,17 @@ const convertedPrice = props.course.coursePrice * (exchangeRates[currency] || 1)
 const discountedPrice=(convertedPrice*props.course.discount)/100;
   return (
     <div className="max-w-sm mx-auto border border-gray-200 rounded-2xl shadow-xl bg-white overflow-hidden">
-      <img
+     {playinglecture?<YouTube videoId={playinglecture} opts={{
+      width: "100%",  
+      height: "100%", 
+      playerVars: {
+        autoplay: 1, 
+      },
+    }} />: <img
         src={props.course.courseThumbnail}
         alt="Course"
         className="w-full h-48 object-cover"
-      />
+      />}
       <div className="p-6">
         <h2 className="text-2xl font-bold text-gray-800">{courseTitle}</h2>
         <p

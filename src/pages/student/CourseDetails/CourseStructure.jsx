@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { dummyCourses } from "../../../assets/assets";
-
+import Youtube from "react-youtube";
+import { AppContext } from "../../../context/AppContext";
 export const CourseStructure = () => {
   const { courseID } = useParams();
   const [selectedLecture, setSelectedLecture] = useState(null);
   const [open, setOpen] = useState(false);
-
+ const {setPlayingLecture}=useContext(AppContext);
   return (
     <div className="w-96 mx-auto mt-5">
       
@@ -31,6 +32,14 @@ export const CourseStructure = () => {
                   <div className="mt-2 p-2 bg-white border rounded shadow">
                     {chapter.chapterContent.map((lecture) => (
                       <div key={lecture.lectureId} className="p-2 border-b last:border-none">
+                        {lecture.isPreviewFree === true && (
+                          <button
+                            onClick={() => setPlayingLecture(lecture.lectureId)}
+                            className="text-blue-500 underline mr-2"
+                          >
+                            ▶ Preview
+                          </button>
+                        )}
                         {lecture.lectureTitle}
                       </div>
                     ))}
