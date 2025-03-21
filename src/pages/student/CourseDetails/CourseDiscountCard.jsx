@@ -4,6 +4,7 @@ import { AppContext } from "../../../context/AppContext";
 import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
 import YouTube from "react-youtube";
 const CourseCard = (props) => {
+  let duration=0;
 const courseTitle=props.course.courseTitle;
 const {currency}=useContext(AppContext);
 const {playinglecture}=useContext(AppContext);
@@ -23,6 +24,10 @@ const averageRating = totalReviews > 0
 : 0;
 const convertedPrice = props.course.coursePrice * (exchangeRates[currency] || 1);
 const discountedPrice=(convertedPrice*props.course.discount)/100;
+ duration=props.course.courseContent.reduce((lecDur,chapter)=>
+  lecDur+chapter.chapterContent.reduce((lec,index)=>lec+Number(index.lectureDuration),0)
+
+  ,0)/60
   return (
     <div className="max-w-sm mx-auto border border-gray-200 rounded-2xl shadow-xl bg-white overflow-hidden">
      {playinglecture?<YouTube videoId={playinglecture} opts={{
@@ -50,10 +55,9 @@ const discountedPrice=(convertedPrice*props.course.discount)/100;
             )}</strong>
           </p>
           <p className="text-gray-700 text-lg">
-            <strong>⏳ Total Hours:</strong> {props.course.courseContent.reduce((lecDur,chapter)=>
-            lecDur+chapter.chapterContent.reduce((lec,index)=>lec+Number(index.lectureDuration),0)
-
-            ,0)/60} hours
+          
+             <strong>⏳ Total Hours: {duration.toFixed(2)} hours</strong> 
+            
           </p>
           <p className="text-gray-700 text-lg flex items-center">
             <strong>⭐ Rating:</strong>

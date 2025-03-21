@@ -39,7 +39,7 @@ const MyEnrollments = () => {
                     <Line strokeWidth={2} percent={(lecturesCompleted[index] / lectureCount(enrollment._id)) * 100} className="mt-1" />
                   </div>
                 </td>
-                <td className="border border-gray-300 px-4 py-4">{calculateDuration(enrollment._id)} hours</td>
+                <td className="border border-gray-300 px-4 py-4">{calculateDuration(enrollment._id)}</td>
                 <td className="border border-gray-300 px-4 py-4">{`${lecturesCompleted[index]}/${lectureCount(enrollment._id)}`}</td>
                 <td className="border border-gray-300 px-4 py-4">
                   <div className="w-full bg-gray-200 rounded-full h-6 relative">

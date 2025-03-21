@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { dummyCourses } from "../assets/assets";
-
+import {DateTime,Duration} from "luxon";
 export const AppContext = createContext();
 
 export const CurrencyProvider = ({ children }) => {
@@ -27,12 +27,24 @@ export const CurrencyProvider = ({ children }) => {
   function calculateDuration(courseID){
     const courseFindedForDuration=dummyCourses.find(ind_course=>ind_course._id===courseID)
     if (!courseFindedForDuration) return 0;
-      const totalHours=courseFindedForDuration.courseContent.reduce((lecdur,chapter)=>{
+      const minutes=courseFindedForDuration.courseContent.reduce((lecdur,chapter)=>{
           return lecdur+chapter.chapterContent.reduce((lec,lec_object)=>{
               return lec+lec_object.lectureDuration;
           },0)
-      },0)/60;
-      return totalHours.toFixed(2);
+      },0);
+
+
+    //   const totalMinutes = courseFindedForDuration.courseContent.reduce((lecdur, chapter) => {
+    //     return lecdur + chapter.chapterContent.reduce((lec, lec_object) => {
+    //         return lec + lec_object.lectureDuration;
+    //     }, 0);
+    // }, 0);
+
+
+
+      const duration=Duration.fromObject({minutes:minutes}).shiftTo("hours", "minutes");
+      return `${duration.hours}h ${duration.minutes}m`
+
   }
   useEffect(() => {
     const fetchLocation = async () => {
