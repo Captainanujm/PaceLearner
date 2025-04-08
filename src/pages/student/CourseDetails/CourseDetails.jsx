@@ -27,13 +27,13 @@ const CourseDetails = () => {
 
   return (
     <div className="flex flex-col lg:flex-row gap-8 p-6 bg-gray-50 min-h-screen items-start justify-center">
-      {/* Left Section */}
+     
       <div className="flex-1 bg-white p-5 rounded-lg shadow-md max-w-3xl">
         <h2 className="text-2xl font-bold mb-4 text-center text-gray-700">
           {course.courseTitle}
         </h2>
 
-        {/* Rating Section */}
+       
         <p className="text-gray-700 text-lg flex items-center">
           <strong>⭐ Rating:</strong>
           <span className="ml-2 text-yellow-500 flex items-center">

@@ -27,9 +27,11 @@ const Navbar = () => {
             >
               My Enrollments
             </Link>
+            <Link to="educator">
             <button className="px-5 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded-md transition">
               Become an Educator
-            </button>
+            </button></Link>
+          
           </>
         )}
 
